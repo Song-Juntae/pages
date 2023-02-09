@@ -48,3 +48,5 @@ class DublinCore:
     def 내용가져오기(self):
         print(self.__내용)
 
+
+
