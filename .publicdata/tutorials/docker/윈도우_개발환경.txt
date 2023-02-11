@@ -1,0 +1,66 @@
+# 최신 공식문서의 설명에 따라 진행하는 것이 가장 편했어요.
+공식 문서 순서대로 나열한 윈도우 개발환경
+
+윈도우 설치 전
+	# 모든 데이터 다 날아가니 백업 필요!!!
+	윈도우 다시 설치
+		https://support.microsoft.com/ko-kr/windows/windows-%EB%8B%A4%EC%8B%9C-%EC%84%A4%EC%B9%98-d8369486-3e33-7d9c-dccc-859e2b022fc7
+
+윈도우 설치 후
+	윈도우 업데이트
+	드라이버
+		윈도우 설치 업데이트 시 자동 설치
+	개인 설정
+		모든 설정
+		작업표시줄
+		탐색기
+		원드라이브
+		브라우저
+		최적화
+	앱 설치 (선택)
+		(예) 모니터 드라이버 설치
+		(예) 크롬, 카카오 플레이어, 디스코드, 줌
+	wsl-vscode 환경
+		vscode
+			https://code.visualstudio.com/docs
+		wsl 2
+			https://learn.microsoft.com/ko-kr/windows/wsl/
+		docker
+			https://learn.microsoft.com/ko-kr/windows/wsl/tutorials/wsl-containers
+
+		docker 실습
+			docker miniconda
+				https://hub.docker.com/r/continuumio/miniconda3
+			docker 컨테이너 실행
+				docker run -i -t -v ~/space:/space --hostname sjt --name miniconda continuumio/miniconda3 /bin/bash
+			miniconda 컨테이너
+				conda update --all
+				conda config --add channels conda-forge
+				conda create -n likelion
+			docker 컨테이너 나오기
+				exit
+			docker 컨테이너 다시 실행
+				docker start -a -i miniconda 
+			docker 컨테이너 나오기
+				exit
+			docker 컨테이너 이미지로 저장
+				docker commit miniconda miniconda_img
+			docker 컨테이너 삭제
+				docker rm miniconda
+			docker 컨테이너 이미지로 실행
+				docker run -i -t -v ~/space:/space --hostname sjt --name miniconda miniconda_img /bin/bash
+
+		docker hub 가입
+			docker 로그인
+				docker login
+			docker 태그 달기
+				docker tag miniconda_img songjuntae/miniconda_img
+			docker 푸시
+				docker push songjuntae/miniconda_img
+			docker 풀
+				docker pull songjuntae/miniconda_img
+			docker 컨테이너 이미지로 실행
+				docker run -i -t -v ~/space:/space --hostname sjt --name miniconda songjuntae/miniconda_img /bin/bash
+		
+		실행된 컨테이너 vscode 연동
+			dev containers attach to running container
