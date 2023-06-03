@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const directoryPath = '../data/media';
+    const directoryPath = './data/media';
     const files = [];
     const xhr = new XMLHttpRequest();
     xhr.open('GET', directoryPath);
